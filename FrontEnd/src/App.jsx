@@ -1,11 +1,11 @@
 import FlashcardContainer from "./components/flashCardContainer"
-
+import NavBar from "./components/NavBar"
 function App() {
 
   return (
     <>
       <div className="App">
-      <h1>Flashcard Learning Tool</h1>
+      <NavBar></NavBar>
       <FlashcardContainer></FlashcardContainer>
       </div>
     </>

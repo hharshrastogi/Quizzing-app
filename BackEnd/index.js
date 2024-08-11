@@ -16,7 +16,7 @@ console.log(`Server is running on port ${port}`);
 
 app.get('/v1/flash_cards', async (req,res)=> {
         try{
-         
+            res.send('Hello')
         }
         catch (e){
         console.error(e)
@@ -30,7 +30,16 @@ app.get('/v1/flash_cards', async (req,res)=> {
 
 app.post('/v1/flash_cards', async (req, res) => {
 try {
+        let body = req.body
+        var flashcardentry = await prisma.flash_card.create({
+            data:{
+                fid : body.fid,
+                question : body.question,
+                answer: body.answer
+            }
+        })
 
+        res.status(201).json({"status":"Created Succesfully","data":body})
 } catch (e) {
   console.error(e)
   await prisma.$disconnect()

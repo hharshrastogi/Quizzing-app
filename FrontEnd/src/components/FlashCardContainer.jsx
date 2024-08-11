@@ -11,13 +11,18 @@ const flashcardsData = [
 
 function FlashcardContainer() {
   const [currentIndex, setCurrentIndex] = useState(0);
-
+  const [flipside,setFlipside] = useState(false);
   const handleNext = () => {
+    setFlipside(!flipside);
     setCurrentIndex((prevIndex) => (prevIndex + 1) % flashcardsData.length);
+
   };
 
   const handlePrevious = () => {
+    setFlipside(!flipside);
     setCurrentIndex((prevIndex) => (prevIndex - 1 + flashcardsData.length) % flashcardsData.length);
+    
+
   };
 
   return (
