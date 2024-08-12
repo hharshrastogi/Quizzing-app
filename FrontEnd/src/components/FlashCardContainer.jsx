@@ -15,7 +15,7 @@ function FlashcardContainer() {
   useEffect(() => {
     const fetchFlashCard = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/v1/flash_cards/${flashCardId}`);
+        const res = await axios.get(`https://quizzing-app.onrender.com/v1/flash_cards/${flashCardId}`);
         setFlashCard(res.data);
       } catch (error) {
         console.error("Error fetching the flashcard data:", error);
@@ -36,7 +36,7 @@ function FlashcardContainer() {
   const handleNext = async (flashCardId) => {
   
     setFlashCardId((prevId) => prevId + 1);
-    if(!(await axios.get(`http://localhost:3000/v1/check_flash_card/:${parseInt(flashCardId + 1)}`))){
+    if(!(await axios.get(`https://quizzing-app.onrender.com/v1/check_flash_card/:${parseInt(flashCardId + 1)}`))){
       setNextBtnEnabled(false);
     }
   };
@@ -53,7 +53,7 @@ function FlashcardContainer() {
 
   const handledeleting = async (flashCardId) =>{
     
-    var res = await axios.delete(`http://localhost:3000/v1/flash_cards/delete/${flashCardId}`)
+    var res = await axios.delete(`https://quizzing-app.onrender.com/v1/flash_cards/delete/${flashCardId}`)
     console.log(res);
   };
 

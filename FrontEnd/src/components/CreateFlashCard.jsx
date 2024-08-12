@@ -39,7 +39,7 @@ function CreateFlashCard(){
             "answer":answer
         }
         console.log(flashCardData);
-        var res= await axios.post('http://localhost:3000/v1/flash_cards',flashCardData)
+        var res= await axios.post('https://quizzing-app.onrender.com/v1/flash_cards',flashCardData)
         console.log(res);
     }
 }

@@ -14,7 +14,7 @@ function EditFlashCard(){
             try{
                 console.log("Hello form fetchflashcarddata");
                     console.log("HEllo");
-                    const res = await axios.get(`http://localhost:3000/v1/flash_cards/${flashCardId}`);
+                    const res = await axios.get(`https://quizzing-app.onrender.com/v1/flash_cards/${flashCardId}`);
                     const flashCard=res.data;
                     console.log(res.data);
 
@@ -40,7 +40,7 @@ function EditFlashCard(){
             };
             console.log(flashCardData);
             try{
-                var res= await axios.post(`http://localhost:3000/v1/edit_flash_cards/${flashCardId}`,flashCardData)
+                var res= await axios.post(`https://quizzing-app.onrender.com/v1/edit_flash_cards/${flashCardId}`,flashCardData)
                 console.log(res);
             }
             catch (e){
