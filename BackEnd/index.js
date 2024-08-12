@@ -41,6 +41,14 @@ app.get('/v1/flash_cards/:fid' ,async (req,res)=>{
         }
       
 })
+app.get('/v1/check_flash_card/:fid',async(req,res)=>{
+    try{
+        let body = req.body
+    }
+    catch (e){
+        
+    }
+})
 
 app.get('/v1/flash_cards', async (req,res)=> {
         try{
@@ -93,13 +101,14 @@ try {
 }
 })
 
-app.post('/v1/flash_cards/delete/:fid',async(req,res)=>{
+app.delete('/v1/flash_cards/delete/:fid',async(req,res)=>{
     try{
         let body = req.body;
         var deleteflashcard = await prisma.flash_card.delete({
             where: {
                 fid:parseInt(req.params.fid)
-            },}
+            },
+        }
         )
     }
     catch(e){

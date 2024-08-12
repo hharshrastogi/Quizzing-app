@@ -7,7 +7,6 @@ function NavBar(){
                 <ul className='navbar-menu'>
                     <li className='navbar-item'><Link to='/home'>Home</Link></li>
                     <li className='navbar-item'><Link to='/createFlashCard'>Create</Link></li>
-                    <li className='navbar-item'>Edit</li>
                 </ul>
             </nav>
         </>
