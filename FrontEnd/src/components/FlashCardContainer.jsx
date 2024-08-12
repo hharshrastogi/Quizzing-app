@@ -1,36 +1,61 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import axios from 'axios'
 import Flashcard from './FlashCard.jsx';
 import './FlashcardContainer.css';
+import { Link, NavLink } from 'react-router-dom';
 
-const flashcardsData = [
-  { question: 'What is React?', answer: 'A JavaScript library for building user interfaces.' },
-  { question: 'What is a Component?', answer: 'Reusable piece of UI in React.' },
-  { question: 'What is JSX?', answer: 'A syntax extension for JavaScript, used in React.' },
-  // Add more flashcards here
-];
+
 
 function FlashcardContainer() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [flipside,setFlipside] = useState(false);
-  const handleNext = () => {
-    setFlipside(!flipside);
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % flashcardsData.length);
+  const [flashCardId,setFlashCardId] = useState(17);
+  const [previousBtnEnabled, setPreviousBtnEnabled] = useState(true);
+  const [flashCard,setFlashCard] = useState({});
+  const [questionSide,setQuestionSide] = useState(true);
+  useEffect(() => {
+    const fetchFlashCard = async () => {
+      try {
+        const res = await axios.get(`http://localhost:3000/v1/flash_cards/${flashCardId}`);
+        setFlashCard(res.data);
+      } catch (error) {
+        console.error("Error fetching the flashcard data:", error);
+      }
+    };
 
+    fetchFlashCard();
+
+    if (flashCardId > 1) {
+      setPreviousBtnEnabled(true);
+    } else {
+      setPreviousBtnEnabled(false);
+    }
+
+    setQuestionSide(false)
+  }, [flashCardId]);
+
+  const handleNext = () => {
+    setFlashCardId((prevId) => prevId + 1);
   };
 
   const handlePrevious = () => {
-    setFlipside(!flipside);
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + flashcardsData.length) % flashcardsData.length);
-    
-
+    // Prevent the flashCardId from going below 1
+    if (flashCardId > 1) {
+      setFlashCardId((prevId) => prevId - 1);
+    }
   };
 
+  
+  
   return (
     <div className="flashcard-container">
-      <Flashcard flashcard={flashcardsData[currentIndex]} />
+      <Flashcard flashCard={flashCard}
+                  questionSide={questionSide}
+                  setQuestionSide={setQuestionSide}
+      />
       <div className="navigation">
-        <button onClick={handlePrevious}>Previous</button>
-        <button onClick={handleNext}>Next</button>
+      {previousBtnEnabled && <button onClick={()=>handlePrevious()}>Previous</button>}
+        <button onClick={()=>handleNext()}>Next</button>
+        <NavLink to={`/edit-flashcards/${flashCardId}`}><button>Edit</button></NavLink>
+        <button>Delete</button>
       </div>
     </div>
   );

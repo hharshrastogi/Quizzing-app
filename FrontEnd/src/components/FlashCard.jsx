@@ -1,19 +1,21 @@
-import { useState } from 'react';
+import {useState } from 'react';
 import './Flashcard.css';
+function FlashCard({flashCard, questionSide, setQuestionSide }) {
+  
 
-function FlashCard({ flashcard}) {
-  const [questionside, setQuestionside] = useState(true);
-
+  
   return (
+
+    
     <div
-      className={`flashcard ${questionside ? 'flipped' : ''}`}
-      onClick={() => setQuestionside(!questionside)}
+      className={`flashcard ${questionSide ? 'flipped' : ''}`}
+      onClick={() => setQuestionSide(!questionSide)}
     >
       <div className="flashcard-front">
-        {flashcard.question}
+        {flashCard.question}
       </div>
       <div className="flashcard-back">
-        {flashcard.answer}
+        {flashCard.answer}
       </div>
     </div>
   );

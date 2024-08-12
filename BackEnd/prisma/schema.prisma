@@ -14,7 +14,7 @@ datasource db {
 }
 
 model flash_card{
-  fid Int @id @default(autoincrement())
-  question String @unique @db.VarChar(255)
+  fid Int @id @unique @default(autoincrement())
+  question String  @db.VarChar(255)
   answer String @db.VarChar(255)
 }
