@@ -6,10 +6,10 @@ const app = express();
 
 app.use(express.json({ limit: "16kb" }));
 app.use(express.urlencoded({ extended: true, limit: "16kb" }));
-// app.use(express.static("public"));
-// app.use(cors({
-//     origin:"http://localhost:5173",
-// }))
+app.use(express.static("public"));
+app.use(cors({
+    origin:"https://quizzing-app.onrender.com",
+}))
 const prisma = new PrismaClient()
 
 

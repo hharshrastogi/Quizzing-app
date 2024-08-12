@@ -1,5 +1,5 @@
-import FlashcardContainer from "./components/flashCardContainer"
-import NavBar from "./components/NavBar"
+import FlashcardContainer from "./components/FlashCardContainer.jsx"
+import NavBar from "./components/NavBar.jsx"
 import "./app.css"
 function App() {
 

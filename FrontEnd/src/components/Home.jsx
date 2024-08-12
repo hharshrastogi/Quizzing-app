@@ -1,5 +1,5 @@
-import FlashcardContainer from "./flashCardContainer";
-import NavBar from "./NavBar";
+import FlashcardContainer from "./FlashCardContainer.jsx";
+import NavBar from "./NavBar.jsx";
 
 function Home(){
     return(
