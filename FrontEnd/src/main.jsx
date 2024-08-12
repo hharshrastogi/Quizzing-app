@@ -2,7 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import CreateFlashCard from './components/CreateFlashCard.jsx';
-import Home from './components/home.jsx';
+import Home from './components/Home.jsx';
 import {
   createBrowserRouter,
   RouterProvider,
