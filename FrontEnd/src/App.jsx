@@ -1,5 +1,6 @@
 import FlashcardContainer from "./components/flashCardContainer"
 import NavBar from "./components/NavBar"
+import "./app.css"
 function App() {
 
   return (

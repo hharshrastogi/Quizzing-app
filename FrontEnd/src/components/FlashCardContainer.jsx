@@ -7,7 +7,7 @@ import { Link, NavLink } from 'react-router-dom';
 
 
 function FlashcardContainer() {
-  const [flashCardId,setFlashCardId] = useState(17);
+  const [flashCardId,setFlashCardId] = useState(22);
   const [previousBtnEnabled, setPreviousBtnEnabled] = useState(true);
   const [flashCard,setFlashCard] = useState({});
   const [questionSide,setQuestionSide] = useState(true);
@@ -66,10 +66,10 @@ function FlashcardContainer() {
                   setQuestionSide={setQuestionSide}
       />
       <div className="navigation">
-      {previousBtnEnabled && <button onClick={()=>handlePrevious()}>Previous</button>}
-      <NavLink to={`/edit-flashcards/${flashCardId}`}><button>Edit</button></NavLink>
-      <button onClick={()=> handledeleting(flashCardId)}>Delete</button>
-      {nextBtnEnabled && <button onClick={()=>handleNext(flashCardId)}>Next</button>}
+      {previousBtnEnabled && <button className="btn-style" onClick={()=>handlePrevious()}>Previous</button>}
+      <NavLink to={`/edit-flashcards/${flashCardId}`}><button className="btn-style">Edit</button></NavLink>
+      <button className="btn-style" onClick={()=> handledeleting(flashCardId)}>Delete</button>
+      {nextBtnEnabled && <button className="btn-style" onClick={()=>handleNext(flashCardId)}>Next</button>}
 
       </div>
     </div>
